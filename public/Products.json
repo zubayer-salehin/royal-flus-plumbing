@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Electric planer Brandix",
+        "image": "https://stroyka.html.themeforest.scompiler.ru/themes/default-ltr/images/products/product-1.jpg",
+        "description": "The motherboard is the backbone that ties the computer's components together at one spot and allows them to talk to each other. Without it, none of the computer pieces, such as the CPU, GPU, or hard drive, could interact. Total motherboard functionality is necessary for a computer to work well",
+        "price": "150",
+        "quantity": 250,
+        "minimumOrderQuantity":10
+    },
+    {
+        "name": "Chaff Cutter Machine",
+        "image": "https://stroyka.html.themeforest.scompiler.ru/themes/default-ltr/images/products/product-2.jpg",
+        "description": "The motherboard is the backbone that ties the computer's components together at one spot and allows them to talk to each other. Without it, none of the computer pieces, such as the CPU, GPU, or hard drive, could interact. Total motherboard functionality is necessary for a computer to work well",
+        "price": "80",
+        "quantity": 130,
+        "minimumOrderQuantity":10
+    },
+    {
+        "name": "Drill Screwdriver Brandix",
+        "image": "https://stroyka.html.themeforest.scompiler.ru/themes/default-ltr/images/products/product-3.jpg",
+        "description": "The motherboard is the backbone that ties the computer's components together at one spot and allows them to talk to each other. Without it, none of the computer pieces, such as the CPU, GPU, or hard drive, could interact. Total motherboard functionality is necessary for a computer to work well",
+        "price": "45",
+        "quantity": 500,
+        "minimumOrderQuantity":10
+    },
+    {
+        "name": "Drill Series 3 Brandix",
+        "image": "https://stroyka.html.themeforest.scompiler.ru/themes/default-ltr/images/products/product-4.jpg",
+        "description": "The motherboard is the backbone that ties the computer's components together at one spot and allows them to talk to each other. Without it, none of the computer pieces, such as the CPU, GPU, or hard drive, could interact. Total motherboard functionality is necessary for a computer to work well",
+        "price": "30",
+        "quantity": 165,
+        "minimumOrderQuantity":10
+    },
+    {
+        "name": "Router Power Tool",
+        "image": "https://stroyka.html.themeforest.scompiler.ru/themes/default-ltr/images/products/product-5.jpg",
+        "description": "The motherboard is the backbone that ties the computer's components together at one spot and allows them to talk to each other. Without it, none of the computer pieces, such as the CPU, GPU, or hard drive, could interact. Total motherboard functionality is necessary for a computer to work well",
+        "price": "110",
+        "quantity": 365,
+        "minimumOrderQuantity":10
+    },
+    {
+        "name": "Drilling Machine",
+        "image": "https://stroyka.html.themeforest.scompiler.ru/themes/default-ltr/images/products/product-6.jpg",
+        "description": "The motherboard is the backbone that ties the computer's components together at one spot and allows them to talk to each other. Without it, none of the computer pieces, such as the CPU, GPU, or hard drive, could interact. Total motherboard functionality is necessary for a computer to work well",
+        "price": "10",
+        "quantity": 700,
+        "minimumOrderQuantity":10
+    }
+]
