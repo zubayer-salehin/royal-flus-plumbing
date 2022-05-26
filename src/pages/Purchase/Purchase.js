@@ -21,7 +21,6 @@ const Purchase = () => {
     const [orderQuantity, setOrderQuantity] = useState(10);
     const [loading, setLoading] = useState(true);
 
-    // get parts
     useEffect(() => {
         setLoading(true);
         fetch(`https://mysterious-river-90884.herokuapp.com/parts/${id}`, {
