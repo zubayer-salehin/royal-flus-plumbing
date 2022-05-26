@@ -7,11 +7,11 @@ const MakeAdmin = () => {
     const [users, setUsers] = useState([]);
     const [userDeleteCount, setUserDeleteCount] = useState(0);
     const [adminCreate, setAdminCreate] = useState(0);
-    const [loading,setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/allUser", {
+        fetch("https://mysterious-river-90884.herokuapp.com/allUser", {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -26,7 +26,7 @@ const MakeAdmin = () => {
     }, [userDeleteCount, adminCreate])
 
     const handleUserDelete = (id) => {
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://mysterious-river-90884.herokuapp.com/user/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -38,7 +38,7 @@ const MakeAdmin = () => {
     }
 
     const handleUserAdmin = (email) => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://mysterious-river-90884.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const MakeAdmin = () => {
                                 {singleUser.role !== "admin" ? <button onClick={() => handleUserAdmin(singleUser.email)} className='btn btn-success btn-sm'>Make Admin</button> : <span className='text-success'>Already Admin</span>}
                             </td>
                             <td>
-                                <button onClick={() => handleUserDelete(singleUser._id)} className='btn btn-error btn-sm'>Remove user</button>
+                                <button className='btn btn-error btn-sm mr-2' onClick={() => handleUserDelete(singleUser._id)}>Remove user</button>
                             </td>
                         </tr>)}
                     </tbody>

@@ -1,5 +1,3 @@
-import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -15,7 +13,7 @@ const MyOrders = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${email}`, {
+        fetch(`https://mysterious-river-90884.herokuapp.com/orders?email=${email}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -33,7 +31,7 @@ const MyOrders = () => {
     }, [email, orderDeleteCount, navigate])
 
     const handleOrderDelete = (id) => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://mysterious-river-90884.herokuapp.com/orders/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -75,21 +73,8 @@ const MyOrders = () => {
                                     </>
                                     :
                                     <>
-                                        <label htmlFor="order-delete-confirm" className='btn btn-error btn-sm mr-2'>Cancle</label>
+                                        <button className='btn btn-error btn-sm mr-2' onClick={() => handleOrderDelete(order._id)}>Cancle</button>
                                         <Link to={`/dashboard/payment/${order._id}`} className='btn btn-sm btn-success w-16'>Pay</Link>
-                                        <input type="checkbox" id="order-delete-confirm" className="modal-toggle" />
-                                        <div className="modal modal-bottom sm:modal-middle overscroll-none">
-                                            <div className="modal-box">
-                                                <h3 className="text-xl font-medium">Are you sure ?</h3>
-                                                <p className="py-4 text-red-500">
-                                                    Do you really want to delete this order ? This process cannot <br /> be undone
-                                                </p>
-                                                <div className="modal-action">
-                                                    <label htmlFor="order-delete-confirm" className="btn btn-success">Cancle</label>
-                                                    <label onClick={() => handleOrderDelete(order._id)} htmlFor="order-delete-confirm" className="btn btn-error">Delete</label>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </>
                                 }
                             </td>

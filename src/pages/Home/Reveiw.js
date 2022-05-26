@@ -8,7 +8,7 @@ const Reveiw = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/reveiws")
+        fetch("https://mysterious-river-90884.herokuapp.com/reveiws")
             .then(res => res.json())
             .then(data => {
                 setReveiws(data)
@@ -20,7 +20,7 @@ const Reveiw = () => {
         <div className='mx-4 sm:mx-10 mb-24'>
             <h2 className='text-4xl text-center font-bold text-gray-900 mb-14'>Testimonials</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-                {reveiws.map(rev => <div key={rev._id} className="card bg-base-100 shadow-xl">
+                {reveiws.slice(-6).reverse().map(rev => <div key={rev._id} className="card bg-base-100 shadow-xl">
                     <div className="card-body text-secondary">
                         <div className='flex mt-6'>
                             <div className="rounded-full ring ring-indigo-500">

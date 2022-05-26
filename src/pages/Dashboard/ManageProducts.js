@@ -9,7 +9,7 @@ const ManageProducts = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/parts")
+        fetch("https://mysterious-river-90884.herokuapp.com/parts")
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
@@ -19,7 +19,7 @@ const ManageProducts = () => {
     }, [partsCount])
 
     const handlePartsDelete = (id) => {
-        fetch(`http://localhost:5000/parts/${id}`, {
+        fetch(`https://mysterious-river-90884.herokuapp.com/parts/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -31,7 +31,7 @@ const ManageProducts = () => {
     }
 
     return (loading ? <Loading loadingStatus="true"></Loading> :
-    <div className='m-3 sm:m-0'>
+        <div className='m-3 sm:m-0'>
             <h2 className='text-3xl font-medium py-3'>Manage Tools</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full text-center">
@@ -53,7 +53,7 @@ const ManageProducts = () => {
                             <td>{singleParts.price}</td>
                             <td>{singleParts.quantity}</td>
                             <td>
-                                <button onClick={() => handlePartsDelete(singleParts._id)} className='btn btn-error btn-sm'>Delete</button>
+                               <button className='btn btn-error btn-sm' onClick={() => handlePartsDelete(singleParts._id)}>Delete</button>
                             </td>
                         </tr>)}
                     </tbody>

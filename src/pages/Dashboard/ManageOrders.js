@@ -9,7 +9,7 @@ const ManageOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/allOrders", {
+        fetch("https://mysterious-river-90884.herokuapp.com/allOrders", {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -24,7 +24,7 @@ const ManageOrders = () => {
     }, [orderDeleteCount])
 
     const handleOrderDelete = (id) => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://mysterious-river-90884.herokuapp.com/orders/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -48,6 +48,7 @@ const ManageOrders = () => {
                             <th>Date</th>
                             <th>Parts Name</th>
                             <th>Quantity</th>
+                            <th>Payment</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -59,8 +60,13 @@ const ManageOrders = () => {
                             <td>{order.orderDate}</td>
                             <td>{order.partsName}</td>
                             <td>{order.quantity}</td>
+                            <td className='font-medium'>{order.paid === true ?
+                                <button className='btn btn-xs btn-success text-white'>Paid</button>
+                                :
+                                <button className='btn btn-xs btn-error text-white'>Unpaid</button>
+                            }</td>
                             <td>
-                                <button onClick={() => handleOrderDelete(order._id)} className='btn btn-error btn-sm'>Delete</button>
+                                <button className='btn btn-xs btn-error' onClick={() => handleOrderDelete(order._id)}>Delete</button>
                             </td>
                         </tr>)}
                     </tbody>

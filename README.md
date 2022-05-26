@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Royal Flush Plumbing
+***
+## Live Website Link : https://mastertech-83d9e.web.app/
+***
+### A list of work how make this website:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* Home page : First on the website,There is a homepage.There is a navber, picture and some text in the homepage.When you scroll the website,A Tools section will appear.There are six products behind this section.The name of the Tool name,picture,price,description,available quantity,minimum quantity have been tweaked.Clicking on the Book now button will take you to the parchase/id page.parchase/id page appear tool name,picture,price,description,available quantity,minimum quantity and right side appear a order place form and many input available and order place button include. order place button click the form input value to store a database and succes message appear and go to the payment page. 
 
-## Available Scripts
+* Dashboard page : In this route, you will see left side menu bar and right side content appear.Normal user show sidebar pages myprofile,myorders,addreveiw and admin show myprofile,manageorder,managetool,makeAdmin,addTool pages.
 
-In the project directory, you can run:
+* Blogs page : There are five questions and answers in the blog page.The questions are How will you improve the performance of a React Application?, What are the different ways to manage a state in a React application?, How does prototypical inheritance work?, What is a unit test? Why should write unit tests?, Why you do not set the state directly in React. For example, if you have `const [products, setProducts] = useState([])`. Why you do not set `products = [...]` instead, you use the `setProducts`?
 
-### `npm start`
+* My Portofolio page : In this route, I will have my name, email address, educational background, list of technologies or skills I have as a web developer. Add links of three of my projects (live website links), Adding descriptions. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Register and Login page : In the Register page there are three input in this page name,email,password,Register button and google singUp button.In the Login page there are two input in this page email,password,Login button and google singUp button.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Error Message : If you go to a page other than the home,dashboard,My Portofolio,Blog page. it will show you an error message.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Technology and library usage :
+* tailwind
+* firebase
+* react-toastify
+* react-firebase-hooks
+* react-leaflet
+* react-router-dom
+* react-spinners
+* react-fontawesome
+* react-stripe-js
+* daisyui
+* react-query

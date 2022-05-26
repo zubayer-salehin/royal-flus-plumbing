@@ -36,7 +36,7 @@ const Navbar = () => {
                 <a className="btn btn-ghost normal-case text-2xl font-bold px-0">Royal Flus Plumbing</a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0 font-medium">
+                <ul className="menu menu-horizontal p-0 font-medium sm:ml-10">
                     {menuItem}
                 </ul>
             </div>

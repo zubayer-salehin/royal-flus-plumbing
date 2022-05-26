@@ -10,7 +10,7 @@ const Product = ({singleParts }) => {
 
     return (
         <div className="card bg-base-100 drop-shadow-lg">
-            <figure><img className='w-60' src={image} alt="Shoes" /></figure>
+            <figure><img className='w-60 h-60' src={image} alt="Shoes" /></figure>
             <div className="card-body text-secondary p-5">
                 <h2 className="card-title">
                     {name}

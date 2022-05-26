@@ -9,7 +9,7 @@ const Products = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/parts")
+        fetch("https://mysterious-river-90884.herokuapp.com/parts")
             .then(res => res.json())
             .then(data => {
                 setParts(data)
@@ -20,7 +20,7 @@ const Products = () => {
         <div className='mx-3 sm:mx-10 mb-24'>
             <h2 className='text-4xl text-center py-10 text-gray-900 font-bold'>Tools</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12'>
-                {parts.map(singleParts => <SingleParts key={singleParts._id} singleParts={singleParts}></SingleParts>)}
+                {parts.slice(-6).reverse().map(singleParts => <SingleParts key={singleParts._id} singleParts={singleParts}></SingleParts>)}
             </div>
         </div>
     );
