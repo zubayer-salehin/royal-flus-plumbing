@@ -31,15 +31,18 @@ const MyOrders = () => {
     }, [email, orderDeleteCount, navigate])
 
     const handleOrderDelete = (id) => {
-        fetch(`https://mysterious-river-90884.herokuapp.com/orders/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    setOrderDeleteCount(orderDeleteCount + 1);
-                }
+        const browserConfirm = window.confirm("Are you sure You want to delete");
+        if (browserConfirm) {
+            fetch(`https://mysterious-river-90884.herokuapp.com/orders/${id}`, {
+                method: 'DELETE'
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        setOrderDeleteCount(orderDeleteCount + 1);
+                    }
+                })
+        }
     }
 
 

@@ -2,7 +2,7 @@ import { faBattery2, faBatteryFull, faMinus, faPlus } from '@fortawesome/free-so
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Footer from '../shared/Footer';
@@ -19,7 +19,6 @@ const Purchase = () => {
     const [singleParts, setSingleParts] = useState({});
     const { _id, name, image, description, price, quantity, minimumOrderQuantity } = singleParts;
     const [orderQuantity, setOrderQuantity] = useState(10);
-    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -51,11 +50,11 @@ const Purchase = () => {
         e.preventDefault();
         if (quantity < orderQuantity) {
             toast.error(`You have order ${name} quantity ${quantity} or less than ${quantity}`);
-            return; 
+            return;
         }
         if (minimumOrderQuantity > orderQuantity) {
             toast.error(`You have order ${name} quantity ${minimumOrderQuantity} or more than ${minimumOrderQuantity}`);
-            return; 
+            return;
         }
         const order = {
             partsId: _id,
@@ -80,7 +79,6 @@ const Purchase = () => {
             .then(data => {
                 if (data.success) {
                     toast.success(`${name} Parts is order`)
-                    navigate(`/dashboard`)
                 } else {
                     toast.error(`${name} Parts is not book`);
                 }
