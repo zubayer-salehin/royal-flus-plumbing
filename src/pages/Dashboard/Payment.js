@@ -14,7 +14,7 @@ const Payment = () => {
     const url = `https://mysterious-river-90884.herokuapp.com/orders/${id}`;
 
     const { data: order, isLoading } = useQuery(['orders', id], () => fetch(url, {
-        method: 'get',
+        method: 'GET',
         headers: {
             "authorization": `Bearer ${localStorage.getItem("accessToken")}`
         }

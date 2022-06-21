@@ -41,7 +41,7 @@ const Footer = () => {
                         <h6 className="uppercase font-medium mb-4">Newsletter</h6>
                         <p className='mb-4'>Be the first to know about exciting our tools collection. Incradible tools and much more.</p>
                         <form onSubmit={handleNewsLater}>
-                            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Email" class="input w-60 max-w-xs text-gray-900 font-medium " />
+                            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Email" className="input w-60 max-w-xs text-gray-900 font-medium " />
                             <input className='btn btn-secondary text-white ml-2' type="submit" value="Submit" />
                         </form>
                     </div>
