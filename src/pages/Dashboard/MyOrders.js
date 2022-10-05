@@ -13,7 +13,7 @@ const MyOrders = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`https://mysterious-river-90884.herokuapp.com/orders?email=${email}`, {
+        fetch(`https://stroyka-server-side.onrender.com/orders?email=${email}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -33,7 +33,7 @@ const MyOrders = () => {
     const handleOrderDelete = (id) => {
         const browserConfirm = window.confirm("Are you sure You want to delete");
         if (browserConfirm) {
-            fetch(`https://mysterious-river-90884.herokuapp.com/orders/${id}`, {
+            fetch(`https://stroyka-server-side.onrender.com/orders/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

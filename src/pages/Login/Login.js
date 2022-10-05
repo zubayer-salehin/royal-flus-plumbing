@@ -3,7 +3,7 @@ import auth from "../../firebase.init"
 import { useSignInWithEmailAndPassword, useSignInWithGoogle, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import googleImage from "../../assets/google.png"
+import googleImage from "../../assets/Login&Register/google.png"
 import useToken from '../Hooks/useToken';
 import Loading from '../shared/Loading/Loading';
 import Footer from '../shared/Footer';

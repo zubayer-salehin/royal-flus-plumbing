@@ -15,7 +15,7 @@ const CheckOutForm = ({ order }) => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://mysterious-river-90884.herokuapp.com/create-payment-intent`, {
+        fetch(`https://stroyka-server-side.onrender.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 "content-type": "application/json",
@@ -83,7 +83,7 @@ const CheckOutForm = ({ order }) => {
                 quantity: quantity,
                 partsId: partsId
             }
-            fetch(`https://mysterious-river-90884.herokuapp.com/orders/${_id}`, {
+            fetch(`https://stroyka-server-side.onrender.com/orders/${_id}`, {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json"

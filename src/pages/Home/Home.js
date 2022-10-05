@@ -6,16 +6,18 @@ import Reveiw from './Reveiw';
 import Summary from './Summary';
 import Works from './Works';
 import Footer from "../shared/Footer"
+import Faq from './Faq';
 
 const Home = () => {
     return (
         <>
-            <div className='px-4 sm:px-12'>
+            <div>
                 <Banner></Banner>
                 <AllParts></AllParts>
                 <Summary></Summary>
-                <Reveiw></Reveiw>
                 <Works></Works>
+                <Reveiw></Reveiw>
+                <Faq></Faq>
                 <Location></Location>
             </div>
             <Footer></Footer>

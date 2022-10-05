@@ -11,7 +11,7 @@ const MakeAdmin = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://mysterious-river-90884.herokuapp.com/allUser", {
+        fetch("https://stroyka-server-side.onrender.com/allUser", {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -26,7 +26,7 @@ const MakeAdmin = () => {
     }, [userDeleteCount, adminCreate])
 
     const handleUserDelete = (id) => {
-        fetch(`https://mysterious-river-90884.herokuapp.com/user/${id}`, {
+        fetch(`https://stroyka-server-side.onrender.com/user/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -38,7 +38,7 @@ const MakeAdmin = () => {
     }
 
     const handleUserAdmin = (email) => {
-        fetch(`https://mysterious-river-90884.herokuapp.com/user/admin/${email}`, {
+        fetch(`https://stroyka-server-side.onrender.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

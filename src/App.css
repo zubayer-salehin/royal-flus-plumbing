@@ -1,38 +1,177 @@
-.App {
-  text-align: center;
+/*Container CSS Start*/
+
+.customContainer {
+    width: 100%;
+    padding-right: .75rem;
+    padding-left: .75rem;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@media screen {
+
+    @media (max-width: 575px) {
+        .customContainer {
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 576px) {
+        .customContainer {
+            max-width: 520px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .customContainer {
+            max-width: 720px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .customContainer {
+            max-width: 960px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .customContainer {
+            max-width: 1180px;
+        }
+    }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*Container CSS End*/
+
+
+/*Single Parts CSS Start*/
+
+.singlePartsBoxShadow {
+    box-shadow: 0 0 10px rgb(0 0 0 / 15%);
+    border-radius: 6px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/*Single Parts CSS End*/
+
+
+/*Navbar CSS Start*/
+
+.logo {
+    width: 205px;
 }
 
-.App-link {
-  color: #61dafb;
+li a:hover {
+    background-color: transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li a:focus {
+    background-color: transparent;
 }
+
+.paddingDecrease {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+/*Navbar CSS End*/
+
+
+/*Banner CSS Start*/
+
+.bannerImage {
+    width: 100vw;
+    height: calc(100vh - 64px);
+    object-fit: cover;
+}
+
+.swiper-button-prev {
+    width: 50px;
+    height: 50px;
+}
+
+.swiper-button-next {
+    width: 44px;
+    height: 44px;
+}
+
+.swiper-button-prev:after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px !important;
+    color: white;
+    width: 44px;
+    height: 44px;
+    background-color: #3d464d;
+}
+
+.swiper-button-next:after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px !important;
+    color: white;
+    width: 44px;
+    height: 44px;
+    background-color: #3d464d;
+}
+
+.bannerImagePositionSet {
+    top: 50%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 575px) {
+
+    .bannerImage {
+        width: 100vw;
+        height: calc(80vh - 64px);
+        object-fit: cover;
+    }
+
+    .bannerImagePositionSet {
+        top: 50%;
+        left: 44%;
+        transform: translate(-50%, -50%);
+    }
+
+    .smallDeviceButton {
+        padding: 6px 12px;
+    }
+
+}
+
+/*Banner CSS End*/
+
+
+/*Single Parts CSS Start*/
+
+.summaryBackgroundImageSet {
+    background-image: url("/src/assets/Summary/image.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 80px;
+    position: relative;
+}
+
+/*Single Parts CSS End*/
+
+
+/* Testimonial CSS Start */
+
+.swiper-pagination-bullet {
+    background-color: white !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: white !important;
+}
+
+.swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+}
+
+/* Testimonial CSS End */

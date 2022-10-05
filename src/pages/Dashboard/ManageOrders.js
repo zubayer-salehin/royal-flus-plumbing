@@ -9,7 +9,7 @@ const ManageOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://mysterious-river-90884.herokuapp.com/allOrders", {
+        fetch("https://stroyka-server-side.onrender.com/allOrders", {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -24,7 +24,7 @@ const ManageOrders = () => {
     }, [orderDeleteCount])
 
     const handleOrderDelete = (id) => {
-        fetch(`https://mysterious-river-90884.herokuapp.com/orders/${id}`, {
+        fetch(`https://stroyka-server-side.onrender.com/orders/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

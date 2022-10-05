@@ -12,7 +12,7 @@ const AddReveiw = () => {
         const description = e.target.description.value;
         const newReveiw = { name, Address, image, rating,description };
 
-        fetch("https://mysterious-river-90884.herokuapp.com/reveiws", {
+        fetch("https://stroyka-server-side.onrender.com/reveiws", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

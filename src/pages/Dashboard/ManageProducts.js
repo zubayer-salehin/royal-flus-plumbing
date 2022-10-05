@@ -9,7 +9,7 @@ const ManageProducts = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://mysterious-river-90884.herokuapp.com/parts")
+        fetch("https://stroyka-server-side.onrender.com/parts")
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
@@ -19,7 +19,7 @@ const ManageProducts = () => {
     }, [partsCount])
 
     const handlePartsDelete = (id) => {
-        fetch(`https://mysterious-river-90884.herokuapp.com/parts/${id}`, {
+        fetch(`https://stroyka-server-side.onrender.com/parts/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

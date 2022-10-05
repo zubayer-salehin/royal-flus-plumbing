@@ -1,20 +1,61 @@
 import React from 'react';
-import background from "../../assets/photo-1519389950473-47ba0277781c.jpeg"
+import { EffectFade, Navigation, A11y, Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import "swiper/css/effect-fade";
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import slider1 from "../../assets/Banner/slide-1.jpg"
+import slider2 from "../../assets/Banner/slide-2.jpg"
+import slider3 from "../../assets/Banner/slide-3.jpg"
+
 
 const Banner = () => {
     return (
-        <div className="hero mb-12 pt-10 sm:mb-14 sm:pt-14">
-            <div className="hero-content flex-col lg:flex-row-reverse p-1 sm:p-4 mb-4 sm:mb-0">
-                <img src="https://img.freepik.com/free-photo/sanitary-technician-gesturing-thumb-up_23-2147772204.jpg?t=st=1653495216~exp=1653495816~hmac=c400ae679c4e8f0da9178edfd1bbfc820918e692202517499546a6c7d97c773d&w=740" className="sm:max-w md:w-1/2 rounded-lg shadow-2xl" alt=''/>
-                <div className='text-gray-900'>
-                    <h1 className="text-5xl font-bold leading-tight text-secondary">Big Choice to Plumbing Tools</h1>
-                    <p className="py-6 text-secondary mr-5">Royal Flus Plumbing is the international trade association for plumbing product manufacturers, suppliers and certifier organizations. Its member companies produce most of the nation’s plumbing products.</p>
-                    <button type="button" className="btn btn-primary px-8 border-0 font-bold text-secondary">
-                        GET STARED
-                    </button>
+        <Swiper
+            modules={[EffectFade, Navigation, A11y, Autoplay]}
+            autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+            }}
+            effect={"fade"}
+            loop={true}
+            navigation
+            slidesPerView={1}>
+            <SwiperSlide className='relative'>
+                <img className='bannerImage max-w-full' src={slider1} alt="" />
+                <div className='absolute bannerImagePositionSet'>
+                    <h2 className='text-left text-3xl sm:text-5xl font-bold text-white bannerTitleStyle smallDeviceTitle'>Big Choice Of <span className='inline sm:block'>Plumbing Products</span></h2>
+                    <p className='pt-6 pb-6 hidden sm:block text-white'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, velit <br /> suscipit, a doloribus repellat, cum possimus saepe eaque quidem <br /> quasi ad eligendi dolorem. Voluptatibus, nobis.</p>
+                    <div className='text-left mt-5 sm:mt-0'>
+                        <button className='px-7 py-3.5 mr-3 sm:mr-5 bg-primary text-secondary rounded-sm smallDeviceButton'>Shop Now</button>
+                        <button className='px-7 py-3.5 bg-secondary text-white rounded-sm smallDeviceButton'>About Us</button>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </SwiperSlide>
+            <SwiperSlide className='relative'>
+                <img className='bannerImage' src={slider2} alt="" />
+                <div className='absolute bannerImagePositionSet'>
+                    <h2 className='text-left text-3xl sm:text-5xl font-bold text-white bannerTitleStyle smallDeviceTitle'>Screw Driver <span className='inline sm:block'>Professional Tools</span></h2>
+                    <p className='pt-6 pb-6 hidden sm:block text-white'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, velit <br /> suscipit, a doloribus repellat, cum possimus saepe eaque quidem <br /> quasi ad eligendi dolorem. Voluptatibus, nobis.</p>
+                    <div className='text-left mt-5 sm:mt-0'>
+                        <button className='px-7 py-3.5 mr-3 sm:mr-5 bg-primary text-secondary rounded-sm smallDeviceButton'>Shop Now</button>
+                        <button className='px-7 py-3.5 bg-secondary text-white rounded-sm smallDeviceButton'>About Us</button>
+                    </div>
+                </div>
+            </SwiperSlide>
+            <SwiperSlide className='relative'>
+                <img className='bannerImage' src={slider3} alt="" />
+                <div className='absolute bannerImagePositionSet'>
+                    <h2 className='text-left text-3xl sm:text-5xl font-bold text-white bannerTitleStyle smallDeviceTitle'>One More <span className='inline sm:block'>Unique Header</span></h2>
+                    <p className='pt-6 pb-6 hidden sm:block text-white'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, velit <br /> suscipit, a doloribus repellat, cum possimus saepe eaque quidem <br /> quasi ad eligendi dolorem. Voluptatibus, nobis.</p>
+                    <div className='text-left mt-5 sm:mt-0'>
+                        <button className='px-7 py-3.5 mr-3 sm:mr-5 bg-primary text-secondary rounded-sm smallDeviceButton'>Shop Now</button>
+                        <button className='px-7 py-3.5 bg-secondary text-white rounded-sm smallDeviceButton'>About Us</button>
+                    </div>
+                </div>
+            </SwiperSlide>
+        </Swiper>
     );
 };
 
