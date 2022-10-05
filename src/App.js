@@ -19,11 +19,25 @@ import AddProduct from './pages/Dashboard/AddProduct';
 import MakeAdmin from './pages/Dashboard/MakeAdmin';
 import RequireAdmin from './pages/Login/RequireAdmin';
 import NotFound from './pages/shared/NotFound/NotFound';
+import ScrollToTop from './ScrollToTop';
+import { useEffect, useState } from 'react';
+import Loading from './pages/shared/Loading/Loading';
 
 
 function App() {
-  return (
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, [1500])
+  }, [])
+
+  return (loading ? <Loading loadingStatus="true"></Loading> :
     <div>
+      <ScrollToTop></ScrollToTop>
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />

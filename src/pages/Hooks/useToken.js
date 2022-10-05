@@ -8,7 +8,7 @@ const useToken = (user) => {
         const email = user?.user?.email;
         const currentUser = {email:email}
         if (email) {
-            fetch(`https://stroyka-server-side.onrender.com/user/${email}`,{
+            fetch(`https://mysterious-river-90884.herokuapp.com/user/${email}`,{
                 method:"PUT",
                 headers:{
                     "content-type":"application/json"

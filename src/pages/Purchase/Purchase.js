@@ -23,7 +23,7 @@ const Purchase = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://stroyka-server-side.onrender.com/parts/${id}`, {
+        fetch(`https://mysterious-river-90884.herokuapp.com/parts/${id}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -69,7 +69,7 @@ const Purchase = () => {
         }
 
         // user order 
-        fetch("https://stroyka-server-side.onrender.com/orders", {
+        fetch("https://mysterious-river-90884.herokuapp.com/orders", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
