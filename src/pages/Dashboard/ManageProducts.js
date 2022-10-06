@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import Loading from '../shared/Loading/Loading';
 
 const ManageProducts = () => {
@@ -19,21 +20,40 @@ const ManageProducts = () => {
     }, [partsCount])
 
     const handlePartsDelete = (id) => {
-        fetch(`https://mysterious-river-90884.herokuapp.com/parts/${id}`, {
-            method: 'DELETE'
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://mysterious-river-90884.herokuapp.com/parts/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your Product has been deleted.',
+                                'success'
+                            )
+                            setPartsDeleteCount(partsCount + 1);
+                        }
+                    })
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    setPartsDeleteCount(partsCount + 1);
-                }
-            })
     }
 
     return (loading ? <Loading loadingStatus="true"></Loading> :
         <div className='m-3 sm:m-0'>
-            <h2 className='text-3xl font-medium py-3'>Manage Tools</h2>
-            <div className="overflow-x-auto">
+            <h2 className='pt-5 pb-3 text-2xl font-bold'>Manage Products</h2>
+            <div className="overflow-x-auto mt-2">
                 <table className="table w-full text-center">
                     <thead>
                         <tr>
@@ -53,7 +73,7 @@ const ManageProducts = () => {
                             <td>{singleParts.price}</td>
                             <td>{singleParts.quantity}</td>
                             <td>
-                               <button className='btn btn-error btn-sm' onClick={() => handlePartsDelete(singleParts._id)}>Delete</button>
+                                <button className='btn btn-error btn-sm rounded-sm' onClick={() => handlePartsDelete(singleParts._id)}>Delete</button>
                             </td>
                         </tr>)}
                     </tbody>

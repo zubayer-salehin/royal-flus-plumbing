@@ -44,7 +44,7 @@ const Login = () => {
     return (
         <>
             <div className="hero text-gray-900">
-                <div className="hero-content p-0 sm:p-10">
+                <div className="hero-content py-10">
                     <div style={{ boxShadow: "0 3px 8px rgb(0 0 0 / 24%)" }} className="card flex-shrink-0 w-full max-w-sm bg-base-100">
                         <div className="card-body py-5">
                             <h4 className='text-3xl text-center font-bold'>Login</h4>

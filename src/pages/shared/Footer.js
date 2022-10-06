@@ -19,7 +19,7 @@ const Footer = () => {
 
     return (
         <footer className="bg-gray-900 text-white text-center sm:text-left px-10 sm:px-20">
-            <div className="container py-5">
+            <div className="customContainer pb-5 pt-10 paddingDecrease">
                 <div className="grid sm:grid-cols-12 gap-8 sm:gap-16 py-4">
                     <div className="sm:col-span-4 mb-4 mb-lg-0">
                         <h6 className="text-lg uppercase font-medium">Contact Us</h6>
@@ -90,7 +90,7 @@ const Footer = () => {
             </div>
             <hr />
             <div className="py-3">
-                <div className="container text-center">
+                <div className="text-center">
                     <p className=" mb-0 py-2">Copyright © {year} Royal Flus Plumbing. All rights reserved.</p>
                 </div>
             </div>

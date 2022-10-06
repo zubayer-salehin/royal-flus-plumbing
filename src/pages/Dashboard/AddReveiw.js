@@ -1,16 +1,41 @@
-import React from 'react';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Swal from 'sweetalert2';
+import auth from '../../firebase.init';
+import Loading from '../shared/Loading/Loading';
 
 const AddReveiw = () => {
+
+    const [loading, setLoading] = useState(true);
+    const [userInfo, setUserInfo] = useState({});
+    const [user] = useAuthState(auth);
+    const email = user?.email;
+
+    useEffect(() => {
+        setLoading(true);
+        fetch(`https://mysterious-river-90884.herokuapp.com/user?email=${email}`, {
+            method: "GET",
+            headers: {
+                "content-type": "application/json",
+                "authorization": `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                setUserInfo(data)
+                setLoading(false);
+            })
+
+    }, [email])
 
     const handleReveiwAdd = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const Address = e.target.address.value;
-        const image = e.target.image.value;
+        const image = userInfo?.image;
         const rating = Number(e.target.rating.value);
         const description = e.target.description.value;
-        const newReveiw = { name, Address, image, rating,description };
+        const newReveiw = { name, Address, image, rating, description };
 
         fetch("https://mysterious-river-90884.herokuapp.com/reveiws", {
             method: 'POST',
@@ -22,55 +47,55 @@ const AddReveiw = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    toast.success(`${name} Reveiw Added`)
                     e.target.reset();
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: `${name} Reveiw Added`,
+                        showConfirmButton: true,
+                    })
                 } else {
-                    toast.error(`${name} Please again fill the form`);
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'error',
+                        title: `${name} Please again fill the form`,
+                        showConfirmButton: true,
+                    })
                 }
             })
     }
 
-    return (
-        <div className='ml-5 '>
-            <h2 className='text-3xl my-3 font-medium'>Add a Reveiw</h2>
-            <div className='sm:w-1/2 bg-gray-200 p-10 sm:p-5 rounded-md mr-5'>
-                <form onSubmit={handleReveiwAdd}>
-                    <div className='sm:flex justify-between'>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Name</span>
-                            </label>
-                            <input type="text" name='name' placeholder="Name" className="input input-bordered sm:w-56" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Address</span>
-                            </label>
-                            <input type="text" name='address' placeholder="address" className="input input-bordered sm:w-56" required />
-                        </div>
-                    </div>
-                    <div className='sm:flex justify-between mt-3'>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Image</span>
-                            </label>
-                            <input type="text" name='image' placeholder="Image URL" className="input input-bordered sm:w-56" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Ratings</span>
-                            </label>
-                            <input type="number" name='rating' max="5" min="1" placeholder="Rating 1 out of 5" className="input input-bordered sm:w-56" required />
-                        </div>
-                    </div>
-                    <div className="form-control mt-3">
+    return (loading ? <Loading loadingStatus="true"></Loading> :
+        <div className='m-3 sm:m-0'>
+            <h2 className='pt-5 pb-3 text-2xl font-bold'>Add Review</h2>
+            <div className='py-7' style={{ backgroundColor: "#f4f7fc" }}>
+                <form className='sm:w-1/2 bg-white mx-5 p-5 rounded-2xl' onSubmit={handleReveiwAdd}>
+                    <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Description</span>
+                            <span className="label-text">Name</span>
                         </label>
-                        <textarea name='description' className="textarea" placeholder="Bio"></textarea>
+                        <input type="text" name='name' defaultValue={userInfo?.name} placeholder="Name" className="input input-bordered rounded-sm " required />
                     </div>
-                    <div className="form-control mt-6">
-                        <input className='btn btn-success' type="submit" value="Reveiw Add" />
+                    <div className="form-control mt-2.5">
+                        <label className="label">
+                            <span className="label-text">Address</span>
+                        </label>
+                        <input type="text" name='address' defaultValue={userInfo?.address} placeholder="address" className="input input-bordered rounded-sm " required />
+                    </div>
+                    <div className="form-control mt-2.5">
+                        <label className="label">
+                            <span className="label-text">Ratings</span>
+                        </label>
+                        <input type="number" name='rating' max="5" min="1" placeholder="Rating 1 out of 5" className="input input-bordered rounded-sm " required />
+                    </div>
+                    <div className="form-control mt-2.5">
+                        <label className="label">
+                            <span className="label-text">Tell Us About Services</span>
+                        </label>
+                        <textarea name='description' className="textarea textarea-bordered rounded-sm" placeholder="Tell Us"></textarea>
+                    </div>
+                    <div className="form-control mt-8">
+                        <input className='btn btn-success capitalize rounded-sm' type="submit" value="Reveiw Add" />
                     </div>
                 </form>
             </div>

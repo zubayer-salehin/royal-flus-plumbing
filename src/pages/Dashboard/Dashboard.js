@@ -1,8 +1,12 @@
+import { faCommentDots } from '@fortawesome/free-regular-svg-icons';
+import { faCartShopping, faHouseChimney, faList, faListCheck, faPlus, faUserCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from '../Hooks/useAdmin';
+
 
 const Dashboard = () => {
 
@@ -12,26 +16,27 @@ const Dashboard = () => {
     return (
         <div className="drawer drawer-mobile">
             <input id="sidebar-open" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-                <h2 className='text-4xl text-secondary font-bold mt-5 ml-3 sm:ml-0'>Welcome to your Dashboard</h2>
+            <div className="drawer-content sm:mr-5 sm:ml-5">
                 <Outlet></Outlet>
             </div>
             <div className="drawer-side">
                 <label htmlFor="sidebar-open" className="drawer-overlay"></label>
-                <ul className="menu py-4 pl-4 pr-10 overflow-y-auto w-54  mr-3 bg-secondary text-white">
-                    <li><Link to="/dashboard">My Profile</Link></li>
-                    {admin === true ? "" :
+                <ul className="menu p-4 overflow-y-auto w-60 border-r-2 bg-white sm:bg-transparent">
+                    <li className='font-bold border-b-2 border-primary'><div><FontAwesomeIcon className='text-secondary' icon={faHouseChimney}></FontAwesomeIcon> Dashboard</div></li>
+                    <li className='border-b-2'><Link className='font-medium' to="/dashboard"> <FontAwesomeIcon className='text-secondary' icon={faUserCheck}></FontAwesomeIcon> My Profile</Link></li>
+                    {!admin ?
                         <>
-                            <li><Link to="/dashboard/myOrders">My Orders</Link></li>
-                            <li><Link to="/dashboard/addReveiw">Add Reveiw</Link></li>
+                            <li className='border-b-2'><Link className='font-medium' to="/dashboard/myOrders"> <FontAwesomeIcon className='text-secondary' icon={faCartShopping}></FontAwesomeIcon> My Booking</Link></li>
+                            <li className='border-b-2'><Link className='font-medium' to="/dashboard/addReveiw"> <FontAwesomeIcon className='text-secondary' icon={faCommentDots}></FontAwesomeIcon> Add Reveiw</Link></li>
+                        </>
+                        :
+                        <>
+                            <li className='border-b-2'><Link className='font-medium' to="/dashboard/manageOrders"> <FontAwesomeIcon className='text-secondary' icon={faList}></FontAwesomeIcon> Manage Booking</Link></li>
+                            <li className='border-b-2'><Link className='font-medium' to="/dashboard/addProduct"> <FontAwesomeIcon className='text-secondary' icon={faPlus}></FontAwesomeIcon>Add Product</Link></li>
+                            <li className='border-b-2'><Link className='font-medium' to="/dashboard/manageProducts"> <FontAwesomeIcon className='text-secondary' icon={faListCheck}></FontAwesomeIcon> Manage Product</Link></li>
+                            <li className='border-b-2'><Link className='font-medium' to="/dashboard/makeAdmin"> <FontAwesomeIcon className='text-secondary' icon={faUserPlus}></FontAwesomeIcon> Make Admin</Link></li>
                         </>
                     }
-                    {admin && <>
-                        <li><Link to="/dashboard/manageOrders">Manage Orders</Link></li>
-                        <li><Link to="/dashboard/manageProducts">Manage Tools</Link></li>
-                        <li><Link to="/dashboard/addProduct">Add Tools</Link></li>
-                        <li><Link to="/dashboard/makeAdmin">Make Admin</Link></li>
-                    </>}
                 </ul>
             </div>
         </div>

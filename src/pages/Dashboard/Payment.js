@@ -26,6 +26,7 @@ const Payment = () => {
 
     return (
         <>
+            <h2 className='pt-5 pb-3 text-2xl font-bold'>Payment</h2>
             <div className="card w-50 max-w-md bg-base-100 shadow-xl ml-10 mt-5 mb-5">
                 <div className="card-body">
                     <p className="text-success font-bold">Hello, {order.name}</p>

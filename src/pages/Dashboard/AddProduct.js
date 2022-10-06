@@ -1,5 +1,5 @@
 import React from 'react';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const AddProduct = () => {
 
@@ -11,7 +11,7 @@ const AddProduct = () => {
         const quantity = Number(e.target.quantity.value);
         const minimumOrderQuantity = 10;
         const description = e.target.description.value;
-        const newProduct = { name, price, image, quantity,description,minimumOrderQuantity };
+        const newProduct = { name, price, image, quantity, description, minimumOrderQuantity };
 
         fetch("https://mysterious-river-90884.herokuapp.com/parts", {
             method: 'POST',
@@ -23,28 +23,65 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    toast.success(`${name} Product Added`)
                     e.target.reset();
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: `${name} Product Added`,
+                        showConfirmButton: true,
+                    })
                 } else {
-                    toast.error(`${name} Product is Already exists`);
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'error',
+                        title: `${name} Product is Already exists`,
+                        showConfirmButton: true,
+                    })
                 }
             })
     }
 
     return (
-        <div className='m-5 sm:m-0'>
-            <h2 className='text-3xl font-medium py-3'>Add Tools</h2>
-            <form onSubmit={handleProductAdd} className='sm:w-1/3 p-10 sm:p-6 bg-gray-200'>
-                <input type="text" name='name' placeholder="Product Name" className="input w-full max-w-xs input-bordered mb-3" /><br />
-                <input type="text" name='price' placeholder="Product Price" className="input w-full max-w-xs input-bordered mb-3" /><br />
-                <input type="text" name='image' placeholder="Product Image Url " className="input w-full max-w-xs input-bordered mb-3" /><br />
-                <input type="text" name='quantity' placeholder="Product qunatity" className="input w-full input-bordered max-w-xs mb-3" /><br />
-                <textarea name='description' className="textarea w-full textarea-bordered" placeholder="Description"></textarea>
-                <div className='text-center'>
-                    <input className='btn btn-success mt-3 w-52' type="submit" value="Add Product" />
-                </div>
-            </form>
-        </div>
+        <div className='m-3 sm:m-0'>
+            <h2 className='pt-5 pb-3 text-2xl font-bold'>Add Product</h2>
+            <div className='py-7 mb-7' style={{ backgroundColor: "#f4f7fc" }}>
+                <form onSubmit={handleProductAdd} className='sm:w-1/2 bg-white mx-5 p-5 rounded-2xl'>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Product Name</span>
+                        </label>
+                        <input type="text" name='name' placeholder="product name" className="input w-full input-bordered rounded-sm" required />
+                    </div>
+                    <div className="form-control mt-2.5">
+                        <label className="label">
+                            <span className="label-text">Product Price</span>
+                        </label>
+                        <input type="text" name='price' placeholder="product price" className="input w-full input-bordered rounded-sm" required />
+                    </div>
+                    <div className="form-control mt-2.5">
+                        <label className="label">
+                            <span className="label-text">Product Image</span>
+                        </label>
+                        <input type="text" name='image' placeholder="product image url " className="input w-full input-bordered rounded-sm" required />
+                    </div>
+                    <div className="form-control mt-2.5">
+                        <label className="label">
+                            <span className="label-text">Product qunatity</span>
+                        </label>
+                        <input type="text" name='quantity' placeholder="product qunatity" className="input w-full input-bordered rounded-sm" required />
+                    </div>
+                    <div className="form-control mt-2.5">
+                        <label className="label">
+                            <span className="label-text">Product Description</span>
+                        </label>
+                        <textarea name='description' className="textarea w-full textarea-bordered rounded-sm" placeholder="Tell Us About This Product" required></textarea>
+                    </div>
+                    <div className='text-center'>
+                        <input className='btn btn-success capitalize rounded-sm w-full mt-8' type="submit" value="Add Product" />
+                    </div>
+                </form>
+            </div>
+        </div >
     );
 };
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 import Loading from '../shared/Loading/Loading';
 
 const MakeAdmin = () => {
@@ -26,40 +26,73 @@ const MakeAdmin = () => {
     }, [userDeleteCount, adminCreate])
 
     const handleUserDelete = (id) => {
-        fetch(`https://mysterious-river-90884.herokuapp.com/user/${id}`, {
-            method: 'DELETE'
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://mysterious-river-90884.herokuapp.com/user/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            setUserDeleteCount(userDeleteCount + 1);
+                        }
+                    })
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    setUserDeleteCount(userDeleteCount + 1);
-                }
-            })
     }
 
     const handleUserAdmin = (email) => {
-        fetch(`https://mysterious-river-90884.herokuapp.com/user/admin/${email}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                "authorization": `Bearer ${localStorage.getItem("accessToken")}`
-            },
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Making an user as Admin will grant them enhanced privileges. Are you sure you want to make as admin?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Make as Admin'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://mysterious-river-90884.herokuapp.com/user/admin/${email}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "authorization": `Bearer ${localStorage.getItem("accessToken")}`
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data) {
+                            Swal.fire(
+                                'Admin Done',
+                                `This ${email} Person was now a website Admin.`,
+                                'success'
+                            )
+                            setAdminCreate(adminCreate + 1)
+                        }
+                    })
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data) {
-                    setAdminCreate(adminCreate + 1)
-                    toast.success("Admin done");
-                } else {
-                    toast.error(`Not an Admin`);
-                }
-            })
     }
 
     return (loading ? <Loading loadingStatus="true"></Loading> :
         <div className='mx-4 sm:mx-0'>
-            <h2 className='text-3xl font-medium py-3'>Manage Products</h2>
-            <div className="overflow-x-auto">
+            <h2 className='pt-5 pb-3 text-2xl font-bold'>Make Admin</h2>
+            <div className="overflow-x-auto mt-2">
                 <table className="table w-full text-center">
                     <thead>
                         <tr>
@@ -74,10 +107,10 @@ const MakeAdmin = () => {
                             <th>{index + 1}</th>
                             <td>{singleUser.email}</td>
                             <td>
-                                {singleUser.role !== "admin" ? <button onClick={() => handleUserAdmin(singleUser.email)} className='btn btn-success btn-sm'>Make Admin</button> : <span className='text-success'>Already Admin</span>}
+                                {singleUser.role !== "admin" ? <button onClick={() => handleUserAdmin(singleUser.email)} className='btn btn-success btn-sm rounded-sm'>Make Admin</button> : <span className='text-success'>Already Admin</span>}
                             </td>
                             <td>
-                                <button className='btn btn-error btn-sm mr-2' onClick={() => handleUserDelete(singleUser._id)}>Remove user</button>
+                                <button className='btn btn-error btn-sm rounded-sm' onClick={() => handleUserDelete(singleUser._id)}>Remove user</button>
                             </td>
                         </tr>)}
                     </tbody>

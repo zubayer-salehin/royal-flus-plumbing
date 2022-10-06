@@ -41,7 +41,7 @@ const SingUp = () => {
     return (
         <>
             <div className="hero">
-                <div className="hero-content pt-3 pb-10">
+                <div className="hero-content pt-10 sm:pt-3 pb-20">
                     <div style={{ boxShadow: "0 3px 8px rgb(0 0 0 / 24%)" }} className="card flex-shrink-0 w-full max-w-sm bg-base-100">
                         <div className="card-body py-4">
                             <h4 className='text-3xl text-center font-bold'>Register</h4>
