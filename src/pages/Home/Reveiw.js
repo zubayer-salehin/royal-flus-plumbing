@@ -52,8 +52,8 @@ const Reveiw = () => {
                                 },
                             }}
                             pagination={{ clickable: true }}>
-                            {reveiws.slice(-6).reverse().map(rev => <SwiperSlide>
-                                <div key={rev._id} className="card bg-base-100 rounded-sm">
+                            {reveiws.slice(-6).reverse().map(rev => <SwiperSlide key={rev._id}>
+                                <div className="card bg-base-100 rounded-sm">
                                     <div className="card-body text-secondary">
                                         <div className='flex my-2'>
                                             <div className="rounded-full ring ring-indigo-500">

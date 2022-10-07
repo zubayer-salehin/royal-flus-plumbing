@@ -19,7 +19,7 @@ const Faq = () => {
             <h2 className='text-4xl text-gray-900 text-center pt-[96px] pb-[75px] font-bold'>Frequently Ask Qusetion</h2>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-5'>
                 <div className='flex flex-col gap-2.5'>
-                    {faq.map(f => <div key={f.questionNumber} tabindex="0" className="collapse collapse-arrow bg-base-100 text-gray-900">
+                    {faq.map(f => <div key={f.questionNumber} tabIndex="0" className="collapse collapse-arrow bg-base-100 text-gray-900">
                         <input type="checkbox" className='peer' />
                         <div className="collapse-title text-lg font-bold bg-white border-[1px]  border-zinc-300 "> <span className='mr-1.5 text-gray'>0{f.questionNumber}.</span>
                             {f.question}
