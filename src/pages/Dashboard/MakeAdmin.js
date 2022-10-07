@@ -11,7 +11,7 @@ const MakeAdmin = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://mysterious-river-90884.herokuapp.com/allUser", {
+        fetch("https://stroyka-server-side.onrender.com/allUser", {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -25,7 +25,7 @@ const MakeAdmin = () => {
 
     }, [userDeleteCount, adminCreate])
 
-    const handleUserDelete = (id) => {
+    const handleUserDelete = (id, uid) => {
 
         Swal.fire({
             title: 'Are you sure?',
@@ -37,8 +37,12 @@ const MakeAdmin = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://mysterious-river-90884.herokuapp.com/user/${id}`, {
-                    method: 'DELETE'
+                fetch(`https://stroyka-server-side.onrender.com/user?id=${id}&&uid=${uid}`, {
+                    method: 'DELETE',
+                    headers: {
+                        "content-type": "application/json",
+                        "authorization": `Bearer ${localStorage.getItem("accessToken")}`
+                    }
                 })
                     .then(res => res.json())
                     .then(data => {
@@ -67,7 +71,7 @@ const MakeAdmin = () => {
             confirmButtonText: 'Make as Admin'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://mysterious-river-90884.herokuapp.com/user/admin/${email}`, {
+                fetch(`https://stroyka-server-side.onrender.com/user/admin/${email}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -110,7 +114,7 @@ const MakeAdmin = () => {
                                 {singleUser.role !== "admin" ? <button onClick={() => handleUserAdmin(singleUser.email)} className='btn btn-success btn-sm rounded-sm'>Make Admin</button> : <span className='text-success'>Already Admin</span>}
                             </td>
                             <td>
-                                <button className='btn btn-error btn-sm rounded-sm' onClick={() => handleUserDelete(singleUser._id)}>Remove user</button>
+                                <button className='btn btn-error btn-sm rounded-sm' onClick={() => handleUserDelete(singleUser._id, singleUser.uid)}>Remove user</button>
                             </td>
                         </tr>)}
                     </tbody>

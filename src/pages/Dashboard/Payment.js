@@ -11,7 +11,7 @@ const Payment = () => {
     const stripePromise = loadStripe('pk_test_51L1LdlFkK6QGOuLXCBCooyA8PvCjeda2eY9cY8BEL5I6fsuz7kvLbqBeNtu65yeVR7stE1GR3xxZrrTf3qrw5qGJ00xmWY3tm7');
 
     const { id } = useParams();
-    const url = `https://mysterious-river-90884.herokuapp.com/orders/${id}`;
+    const url = `https://stroyka-server-side.onrender.com/orders/${id}`;
 
     const { data: order, isLoading } = useQuery(['orders', id], () => fetch(url, {
         method: 'GET',
@@ -31,7 +31,7 @@ const Payment = () => {
                 <div className="card-body">
                     <p className="text-success font-bold">Hello, {order.name}</p>
                     <h2 className="card-title">Please Pay for {order.partsName} Parts</h2>
-                    <h2 className=" text-primary font-medium">{order.partsName} quantity : {order.quantity}</h2>
+                    <h2 className=" text-secondary font-medium">{order.partsName} quantity : {order.quantity}</h2>
                     <p className='font-medium'>Please pay: ${order.price}</p>
                 </div>
             </div>

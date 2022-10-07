@@ -38,7 +38,7 @@ const MyProfile = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://mysterious-river-90884.herokuapp.com/user?email=${email}`, {
+        fetch(`https://stroyka-server-side.onrender.com/user?email=${email}`, {
             method: "GET",
             headers: {
                 "content-type": "application/json",
@@ -67,7 +67,7 @@ const MyProfile = () => {
             image: userInfo?.image ? userInfo?.image : userPicture
         };
 
-        fetch(`https://mysterious-river-90884.herokuapp.com/userUpdate?email=${email}`, {
+        fetch(`https://stroyka-server-side.onrender.com/userUpdate?email=${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

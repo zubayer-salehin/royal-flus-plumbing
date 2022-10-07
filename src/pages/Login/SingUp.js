@@ -7,6 +7,7 @@ import googleImage from "../../assets/Login&Register/google.png"
 import useToken from '../Hooks/useToken';
 import Loading from '../shared/Loading/Loading';
 import Footer from '../shared/Footer';
+import { useState } from 'react';
 
 const SingUp = () => {
 
@@ -17,12 +18,30 @@ const SingUp = () => {
     let errorElement;
     const [token] = useToken(user || googleUser);
     const navigate = useNavigate();
+    const [userName, setUserName] = useState("");
+    const [userEmail, setUserEmail] = useState("");
 
     useEffect(() => {
         if (token) {
             navigate("/home");
+            if (userName) {
+                fetch(`https://stroyka-server-side.onrender.com/userUpdate?email=${userEmail}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "authorization": `Bearer ${localStorage.getItem("accessToken")}`
+                    },
+                    body: JSON.stringify({ name: userName })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+
+                        }
+                    })
+            }
         }
-    }, [navigate, token])
+    }, [navigate, token, userEmail, userName])
 
 
     if (googleError || error || updateError) {
@@ -34,8 +53,12 @@ const SingUp = () => {
     }
 
     const onSubmit = async (data) => {
+        const name = data.name;
+        setUserName(name);
+        const email = data.email;
+        setUserEmail(email);
         await createUserWithEmailAndPassword(data.email, data.password)
-        await updateProfile({ displayName: data.name })
+        await updateProfile({ displayName: name })
     }
 
     return (

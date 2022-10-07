@@ -17,7 +17,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://mysterious-river-90884.herokuapp.com/orders?email=${email}`, {
+        fetch(`https://stroyka-server-side.onrender.com/orders?email=${email}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -49,7 +49,7 @@ const MyOrders = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://mysterious-river-90884.herokuapp.com/orders/${id}`, {
+                fetch(`https://stroyka-server-side.onrender.com/orders/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -93,12 +93,12 @@ const MyOrders = () => {
                             <td>
                                 {order.paid === true ?
                                     <>
-                                        <button className='btn btn-sm btn-success w-16 rounded-sm'>Paid</button>
+                                        <button className='text-success'>Payment Successfull</button>
                                     </>
                                     :
                                     <>
-                                        <button className='btn btn-error btn-sm mr-3.5 rounded-sm' onClick={() => handleOrderDelete(order._id)}>Cancle</button>
-                                        <Link to={`/dashboard/payment/${order._id}`} className='btn btn-sm btn-success w-16 rounded-sm'>Pay</Link>
+                                        <Link to={`/dashboard/payment/${order._id}`} className='btn btn-sm btn-success w-16 rounded-sm mr-3.5'>Pay</Link>
+                                        <button className='btn btn-error btn-sm rounded-sm' onClick={() => handleOrderDelete(order._id)}>Cancle</button>
                                     </>
                                 }
                             </td>
