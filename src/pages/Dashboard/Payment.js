@@ -11,7 +11,7 @@ const Payment = () => {
     const stripePromise = loadStripe('pk_test_51L1LdlFkK6QGOuLXCBCooyA8PvCjeda2eY9cY8BEL5I6fsuz7kvLbqBeNtu65yeVR7stE1GR3xxZrrTf3qrw5qGJ00xmWY3tm7');
 
     const { id } = useParams();
-    const url = `https://stroyka-server-side.onrender.com/orders/${id}`;
+    const url = `https://stroyka-server-side-production.up.railway.app/orders/${id}`;
 
     const { data: order, isLoading } = useQuery(['orders', id], () => fetch(url, {
         method: 'GET',
