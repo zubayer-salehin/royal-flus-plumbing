@@ -10,7 +10,7 @@ const Products = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://stroyka-server-side-production.up.railway.app/parts", {
+        fetch("https://stroyka-server-side.onrender.com/parts", {
             headers: {
                 'Content-Type': 'application/json',
                 "Accept": 'application/json'

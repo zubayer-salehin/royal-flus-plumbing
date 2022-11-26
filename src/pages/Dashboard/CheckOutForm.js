@@ -15,7 +15,7 @@ const CheckOutForm = ({ order }) => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://stroyka-server-side-production.up.railway.app/create-payment-intent`, {
+        fetch(`https://stroyka-server-side.onrender.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 "content-type": "application/json",
@@ -83,7 +83,7 @@ const CheckOutForm = ({ order }) => {
                 quantity: quantity,
                 partsId: partsId
             }
-            fetch(`https://stroyka-server-side-production.up.railway.app/orders/${_id}`, {
+            fetch(`https://stroyka-server-side.onrender.com/orders/${_id}`, {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json"

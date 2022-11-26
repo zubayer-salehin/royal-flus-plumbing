@@ -8,7 +8,7 @@ const useAdmin = (user) => {
 
     useEffect(() => {
         if (email) {
-            fetch(`https://stroyka-server-side-production.up.railway.app/admin/${email}`, {
+            fetch(`https://stroyka-server-side.onrender.com/admin/${email}`, {
                 method: "GET",
                 headers: {
                     "content-type": "application/json",
