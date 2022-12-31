@@ -13,7 +13,7 @@ const Reveiw = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://stroyka-server-side.vercel.app/reveiws", {
+        fetch("https://stroyka-server-side.onrender.com/reveiws", {
             headers: {
                 'Content-Type': 'application/json',
                 "Accept": 'application/json'

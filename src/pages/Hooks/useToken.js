@@ -12,7 +12,7 @@ const useToken = (user) => {
         const currentUser = { name: name, email: email, uid: uid };
 
         if (email) {
-            fetch(`https://stroyka-server-side.vercel.app/user/${email}`, {
+            fetch(`https://stroyka-server-side.onrender.com/user/${email}`, {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json"

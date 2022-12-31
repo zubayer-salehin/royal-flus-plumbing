@@ -13,7 +13,7 @@ const AddProduct = () => {
         const description = e.target.description.value;
         const newProduct = { name, price, image, quantity, description, minimumOrderQuantity };
 
-        fetch("https://stroyka-server-side.vercel.app/parts", {
+        fetch("https://stroyka-server-side.onrender.com/parts", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ const Purchase = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://stroyka-server-side.vercel.app/parts/${id}`, {
+        fetch(`https://stroyka-server-side.onrender.com/parts/${id}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -70,7 +70,7 @@ const Purchase = () => {
         }
 
         // user order 
-        fetch("https://stroyka-server-side.vercel.app/orders", {
+        fetch("https://stroyka-server-side.onrender.com/orders", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

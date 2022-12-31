@@ -25,7 +25,7 @@ const SingUp = () => {
         if (token) {
             navigate("/home");
             if (userName) {
-                fetch(`https://stroyka-server-side.vercel.app/userUpdate?email=${userEmail}`, {
+                fetch(`https://stroyka-server-side.onrender.com/userUpdate?email=${userEmail}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

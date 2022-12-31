@@ -11,7 +11,7 @@ const MakeAdmin = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://stroyka-server-side.vercel.app/allUser", {
+        fetch("https://stroyka-server-side.onrender.com/allUser", {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -37,7 +37,7 @@ const MakeAdmin = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://stroyka-server-side.vercel.app/user?id=${id}&&uid=${uid}`, {
+                fetch(`https://stroyka-server-side.onrender.com/user?id=${id}&&uid=${uid}`, {
                     method: 'DELETE',
                     headers: {
                         "content-type": "application/json",
@@ -71,7 +71,7 @@ const MakeAdmin = () => {
             confirmButtonText: 'Make as Admin'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://stroyka-server-side.vercel.app/user/admin/${email}`, {
+                fetch(`https://stroyka-server-side.onrender.com/user/admin/${email}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

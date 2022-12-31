@@ -17,7 +17,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://stroyka-server-side.vercel.app/orders?email=${email}`, {
+        fetch(`https://stroyka-server-side.onrender.com/orders?email=${email}`, {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -49,7 +49,7 @@ const MyOrders = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://stroyka-server-side.vercel.app/orders/${id}`, {
+                fetch(`https://stroyka-server-side.onrender.com/orders/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
