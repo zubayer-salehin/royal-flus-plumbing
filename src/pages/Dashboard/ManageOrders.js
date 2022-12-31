@@ -10,7 +10,7 @@ const ManageOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://stroyka-server-side.onrender.com/allOrders", {
+        fetch("https://stroyka-server-side.vercel.app/allOrders", {
             method: "GET",
             headers: {
                 "authorization": `Bearer ${localStorage.getItem("accessToken")}`
@@ -36,7 +36,7 @@ const ManageOrders = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://stroyka-server-side.onrender.com/orders/${id}`, {
+                fetch(`https://stroyka-server-side.vercel.app/orders/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
